@@ -14,10 +14,33 @@
     </header>
 
     <button class="start-button">Começar Jornada</button>
+    <button onclick="sortearImagem()">Sortear Imagem</button>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <div id="image-display">
+        <img id="sorteio-imagem" src="pet/cobra.jpeg.jpeg"  Imagem sorteada />
+    </div>
+
+    <script>
+        const imagens = [
+            "cabra.jpeg.jpeg",
+            "dino.jpeg",
+            "dragao.jpeg.jpeg",
+            "pinguin.jpeg.jpeg"
+        ];
+
+        function sortearImagem() {
+            // Gerar um número aleatório entre 0 e o tamanho do array de imagens
+            const indiceAleatorio = Math.floor(Math.random() * imagens.length);
+            // Alterar a imagem exibida com a imagem sorteada
+            document.getElementById("sorteio-imagem").src = imagens[indiceAleatorio];
+        }
+    </script>
 
     <div class="user-info">
       <div class="pet-info">
-        <img src="pet.png" alt="Pet" class="pet-icon" />
+    
         <div>
           <h3>Nome do Usuário</h3>
           <p>Próximo Dia Desconectado</p>
