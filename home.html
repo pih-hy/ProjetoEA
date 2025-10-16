@@ -14,30 +14,70 @@
     </header>
 
     <button class="start-button">Começar Jornada</button>
-    <button onclick="sortearImagem()">Sortear Imagem</button>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <div id="image-display">
-        <img id="sorteio-imagem" src="pet/cobra.jpeg.jpeg"  Imagem sorteada />
+     <meta charset="UTF-8">  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <button onclick="sortearImagem()">Sortear</button>
+
+  <div>
+    <img id="imagem" src=""  alt="Clique para sortear uma imagem">
+  </div>
+ 
+  
+  <script>
+    // Lista de imagens (pode usar URLs ou arquivos locais)
+    const imagens = [
+      "pet/cobra.jpeg",
+      "pet/dino.jpeg",
+      "pet/dragao.jpeg",
+      "pet/pinguin.jpeg"
+    ];
+
+  
+
+    function sortearImagem() {
+      const indice = Math.floor(Math.random() * imagens.length);
+      document.getElementById("imagem").src = imagens[indice];
+    }
+  </script>
+ <div class="card">
+    <div class="user-info">
+      <div class="user-header">
+        <img src="https://i.imgur.com/3GvwNBf.png" alt="Avatar">
+        <div>
+          <h2>Nome do Usuário</h2>
+          <p>Próximo Dia<br>Desconectado</p>
+        </div>
+      </div>
+
+      <div class="dias">
+        <span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span><span>D</span>
+      </div>
+
+      <div class="barra">
+        <div id="progresso" class="progresso"></div>
+      </div>
+
+      <div class="porcentagem" id="porcentagem">0%</div>
+
+      <div class="nivel">1</div>
+
+      <button onclick="aumentar()">Aumentar XP</button>
     </div>
 
-    <script>
-        const imagens = [
-            "cabra.jpeg.jpeg",
-            "dino.jpeg",
-            "dragao.jpeg.jpeg",
-            "pinguin.jpeg.jpeg"
-        ];
+    <img class="mascote" src="https://i.imgur.com/DT8yQqO.png" alt="Mascote">
+  </div>
 
-        function sortearImagem() {
-            // Gerar um número aleatório entre 0 e o tamanho do array de imagens
-            const indiceAleatorio = Math.floor(Math.random() * imagens.length);
-            // Alterar a imagem exibida com a imagem sorteada
-            document.getElementById("sorteio-imagem").src = imagens[indiceAleatorio];
-        }
-    </script>
-
+  <script>
+    let xp = 0;
+    function aumentar() {
+      if (xp < 100) {
+        xp += 10;
+        document.getElementById("progresso").style.width = xp + "%";
+        document.getElementById("porcentagem").textContent = xp + "%";
+      }
+    }
+  </script>
     <div class="user-info">
       <div class="pet-info">
     
