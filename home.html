@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+ 
   <div class="container">
     <header class="header">
       <h1>DESCONECTA & CRESCE</h1>
@@ -43,46 +44,61 @@
  <div class="card">
     <div class="user-info">
       <div class="user-header">
-        <img src="https://i.imgur.com/3GvwNBf.png" alt="Avatar">
+        <img src="pet/suga.jpg" alt="Avatar">
         <div>
           <h2>Nome do Usuário</h2>
           <p>Próximo Dia<br>Desconectado</p>
         </div>
       </div>
 
+
       <div class="dias">
         <span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span><span>D</span>
       </div>
 
-      <div class="barra">
-        <div id="progresso" class="progresso"></div>
-      </div>
+     <div class="progress-container">
+  <div class="progress-bar" id="barra"></div>
+</div>
+<p id="xp" class="porcentagem">0%</p>
 
-      <div class="porcentagem" id="porcentagem">0%</div>
+<div class="nivel" id="nivel">1</div>
 
-      <div class="nivel">1</div>
+<button id="aumentar">Aumentar XP</button>
 
-      <button onclick="aumentar()">Aumentar XP</button>
-    </div>
+<script>
+  const xpTexto = document.getElementById("xp");
+  const barra = document.getElementById("barra");
+  const nivelTexto = document.getElementById("nivel");
+  const aumentarBtn = document.getElementById("aumentar");
 
-    <img class="mascote" src="https://i.imgur.com/DT8yQqO.png" alt="Mascote">
-  </div>
+  let progresso = 0;
+  let nivel = 1;
 
-  <script>
-    let xp = 0;
-    function aumentar() {
-      if (xp < 100) {
-        xp += 10;
-        document.getElementById("progresso").style.width = xp + "%";
-        document.getElementById("porcentagem").textContent = xp + "%";
-      }
+  // ✅ CORRETO: função dentro de addEventListener
+  aumentarBtn.addEventListener("click", () => {
+    if (progresso < 100) {
+      progresso += 10;
+      barra.style.width = progresso + "%";
+      xpTexto.textContent = progresso + "%";
+    } else {
+      // Quando chegar a 100%, sobe de nível
+      progresso = 0;
+      nivel++;
+      barra.style.width = "0%";
+      xpTexto.textContent = "0%";
+      nivelTexto.textContent = nivel;
+      alert("🎉 Parabéns! Você subiu para o nível " + nivel + "!");
     }
+  });
+</script>
+
+ 
   </script>
     <div class="user-info">
       <div class="pet-info">
     
         <div>
-          <h3>Nome do Usuário</h3>
+         
           <p>Próximo Dia Desconectado</p>
         </div>
       </div>
